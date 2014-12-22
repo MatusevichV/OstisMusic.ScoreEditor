@@ -1,11 +1,12 @@
 <tabset justified="true">
     <tab heading="Tools">
         <div class="instruments panel panel-default">
+		
             <div class="instrument" >
                 Tickable type:<br>
                 <div class="tickables btn-group">
-                    <button class="tickable note btn btn-default active">Note</button>
-                    <button class="tickable rest btn btn-default" >Rest</button>
+                    <button class="tickable note btn btn-default active ">Note</button>
+                    <button class="tickable rest btn btn-default ">Rest</button>
                 </div>
             </div>
 
@@ -13,12 +14,16 @@
                 Duration:<br>
                 <div class="durations btn-group">
                     <button ng-repeat="i in [1,2,4,8,16,32]"
-                            class="item btn btn-default {{editor.noteDuration == i ? 'active': ''}}"
+                            class="item btn btn-default {{editor.noteDuration == i ? 'active': ''}}
+														{{editor.restDuration == i ? 'active': ''}}"
                             value="{{i}}"
                             ng-click="editor.setNoteDuration(i)"
+							ng-click="editor.setRestDuration(i)"
                             >{{i}}</button>
                 </div>
             </div>
+			
+         
 
             <div class="instrument" >
                 Accidentals:<br>
@@ -26,34 +31,9 @@
                     <button class="accidental-sharp item btn btn-default">#</button>
                     <button class="accidental-none item btn btn-default">none</button>
                     <button class="accidental-flat item btn btn-default">b</button>
+					
                 </div>
             </div>
-<!--
--->
-			<script src="/scripts/info.js"></script>						
-			
-			<div class="instrument" >
-			Information about instruments: <br>
-			<FORM name="myForm">
-				<select id="mySelectId" name="mySelect">					
-					<option value="str1"> Acoustic Grand Piano </option>
-					<option value="str2"> Sitar </option>
-					<option value="str3"> Banjo </option>
-					<option value="str4"> Shamisen </option>
-					<option value="str5"> Kalimba </option>
-					<option value="str6"> Fiddle </option>
-					<option value="str7"> Agogo </option>
-					<option value="str8"> Woodblock </option>
-					<option value="str9"> Marimba </option>
-					<option value="str10"> Accordion </option>
-					<option value="str11"> Harmonica </option>
-				</select>
-			</FORM>									
-
-			         <input type="button" onclick="count_rabbits()" value="Ok"}>
-            </div>
-<!--
--->
 
             <div class="instrument" >
                 Instrument:<br>
@@ -61,6 +41,25 @@
                 <select class="form-control" ng-model="activeTrack.instrument"
                         ng-options="instr.instrument for (index, instr) in editor.getAllInstruments()"></select>
             </div>
+			
+			<script src="/scripts/clef.js"></script>
+			
+			<div class="instrument" >
+			Type of clef: <br>
+			<FORM name="clefForm">
+				<select id="clefSelectId" name="clefSelect">					
+					<option value="treble"> Treble </option>
+					<option value="alto"> Alto </option>
+					<option value="tenor"> Tenor </option>
+					<option value="bass"> Bass </option>
+					<option value="percussion"> Percussion </option>
+				</select>
+			</FORM>									
+
+			         <input type="button" onclick="type_of_clef()" value="Ok"}>
+            </div>
+			
+
 
             <div class="row instrument">
                 <div class="col-md-6" >

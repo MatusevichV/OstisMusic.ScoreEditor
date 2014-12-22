@@ -1,5 +1,4 @@
 define(['scripts/model/all'], function(Model){
-
     var Parser = function (){
 
         this.parse = function(track, options){
@@ -32,12 +31,16 @@ define(['scripts/model/all'], function(Model){
             }
             return result;
         };
+		function type_of_clef() {
+			var clefType = document.getElementById("clefSelectId");
+			return clefType;		
+		}
 
         function makeStave(staveNotes, width){
             var result = " \n\n options " +
                 "player=true" +
                 " width=" + width;
-            result += " \n tabstave notation=true clef=none tablature=false \n voice";
+            result += " \n tabstave notation=true clef=treble tablature=false time=C \n voice";
 
             if(staveNotes.length > 0){
                 result += " \n notes ";
@@ -78,7 +81,7 @@ define(['scripts/model/all'], function(Model){
         }
 
         function parseRestChord(chord){
-            return ":" + chord.duration + " ##";
+            return ":" + chord.duration + "##";
         }
     };
 

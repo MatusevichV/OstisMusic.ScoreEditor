@@ -26,6 +26,10 @@ define(function (require) {
             self.noteDuration = duration;
             $scope.selection[0].tickable.duration = duration;
         };
+		 self.setRestDuration = function(duration){
+            self.restDuration = duration;
+            $scope.selection[0].tickable.duration = duration;
+        };
 
         self.setActiveTrack = function(track){
             $scope.activeTrack = track;
@@ -72,12 +76,6 @@ define(function (require) {
                 self.selectedInstrument = new Instruments.NoteCreationInstrument(self, $scope);
             });
 
-            $('.tickable.rest').click(function(event){
-                $('.tickables .tickable').removeClass('active');
-                $(event.target).addClass('active');
-                self.selectedInstrument = new Instruments.RestCreationInstrument(self, $scope);
-            });
-
             $(document)
                 .on('playerReady', function () {
                     $scope.$apply(function(){
@@ -101,6 +99,12 @@ define(function (require) {
             });
 
         }
+		
+            $('.tickable.rest').click(function(event){
+                $('.tickables .tickable').removeClass('active');
+                $(event.target).addClass('active');
+                self.selectedInstrument = new Instruments.RestCreationInstrument(self, $scope);
+            });
 
         this.newTrack();
 
